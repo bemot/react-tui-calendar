@@ -6,7 +6,7 @@ import 'tui-date-picker/dist/tui-date-picker.css'
 import 'tui-time-picker/dist/tui-time-picker.css'
 
 export default function App() {
-  
+
   //Custom theme for the calendar
   const customTheme = {
     //Common style
@@ -157,7 +157,7 @@ export default function App() {
     const calendarInstance = calendarRef.current.getInstance()
     calendarInstance.today()
   }
-  
+
 
   //Sample schedule
   const [newScheduleList, setNewScheduleList] = useState([])
@@ -167,19 +167,19 @@ export default function App() {
   const calendarCat = [
     {
       id: '0',
-      name: 'Providers',
+      name: 'Sasha Bemotoff',
       bgColor: '#9e5fff',
       borderColor: '#9e5fff'
     },
     {
       id: '1',
-      name: 'Location',
+      name: 'Stepan Bardashevskiy',
       bgColor: '#00a9ff',
       borderColor: '#00a9ff'
     },
     {
       id: '2',
-      name: 'Rooms',
+      name: 'Yurii Zhuravel',
       bgColor: '#03bd9e',
       borderColor: '#03bd9e'
     }
@@ -198,7 +198,9 @@ export default function App() {
     let newSchedule = {
       id: Date.now(),
       calendarId: event.calendarId,
-      title: event.title,
+        title: event.title,
+        location: event.location,
+        allday: event.allday,
       category: 'time',
       start: event.start,
       end: event.end
@@ -220,17 +222,20 @@ export default function App() {
         updateSchedule = {
           id: event.schedule.id,
           calendarId: event.schedule.calendarId,
-          title: event.schedule.title,
+            title: event.schedule.title,
+            location: event.schedule.location,
+
           category: 'time',
           start: event.start,
           end: event.end
         }
 
-        copySchedule[index] = updateSchedule
+          copySchedule[index] = updateSchedule
+
       }
     })
 
-    setNewScheduleList([...copySchedule])
+      setNewScheduleList([...copySchedule])
   }
 
   //Delete schedule
@@ -255,18 +260,18 @@ export default function App() {
   //Filter schedule category
   const [filterCat, setFilterCat] = useState([
     {
-      name: 'Providers',
+      name: 'Sasha Bemotoff',
       check: true
     },
     {
-      name: 'Location',
+      name: 'Stepan Bardashevskiy',
       check: true
     },
     {
-      name: 'Rooms',
+      name: 'Yurii Zhuravel',
       check: true
     },
-  ])  
+  ])
 
   const handleFilterCat = catIndex => {
     let copyFilterCat = filterCat
@@ -291,6 +296,15 @@ export default function App() {
   const schedPopupTemplate = {
     titlePlaceholder: () => {
       return 'Subject'
+    },
+      locationPlaceholder: () => {
+      return 'Location';
+    },
+      startDatePlaceholder: () => {
+      return 'Start date';
+    },
+      endDatePlaceholder: () => {
+      return 'End date';
     },
     alldayTitle: () => {
       return '<span class="tui-full-calendar-left-content" style="color: #fff">All Day</span>'
