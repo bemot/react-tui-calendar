@@ -167,19 +167,19 @@ export default function App() {
   const calendarCat = [
     {
       id: '0',
-      name: 'Sasha Bemotoff',
+      name: 'Providers',
       bgColor: '#9e5fff',
       borderColor: '#9e5fff'
     },
     {
       id: '1',
-      name: 'Stepan Bardashevskiy',
+      name: 'Location',
       bgColor: '#00a9ff',
       borderColor: '#00a9ff'
     },
     {
       id: '2',
-      name: 'Yurii Zhuravel',
+      name: 'Rooms',
       bgColor: '#03bd9e',
       borderColor: '#03bd9e'
     }
@@ -198,9 +198,7 @@ export default function App() {
     let newSchedule = {
       id: Date.now(),
       calendarId: event.calendarId,
-        title: event.title,
-        location: event.location,
-        allday: event.allday,
+      title: event.title,
       category: 'time',
       start: event.start,
       end: event.end
@@ -222,20 +220,17 @@ export default function App() {
         updateSchedule = {
           id: event.schedule.id,
           calendarId: event.schedule.calendarId,
-            title: event.schedule.title,
-            location: event.schedule.location,
-
+          title: event.schedule.title,
           category: 'time',
           start: event.start,
           end: event.end
         }
 
-          copySchedule[index] = updateSchedule
-
+        copySchedule[index] = updateSchedule
       }
     })
 
-      setNewScheduleList([...copySchedule])
+    setNewScheduleList([...copySchedule])
   }
 
   //Delete schedule
@@ -260,15 +255,15 @@ export default function App() {
   //Filter schedule category
   const [filterCat, setFilterCat] = useState([
     {
-      name: 'Sasha Bemotoff',
+      name: 'Providers',
       check: true
     },
     {
-      name: 'Stepan Bardashevskiy',
+      name: 'Location',
       check: true
     },
     {
-      name: 'Yurii Zhuravel',
+      name: 'Rooms',
       check: true
     },
   ])
@@ -296,15 +291,6 @@ export default function App() {
   const schedPopupTemplate = {
     titlePlaceholder: () => {
       return 'Subject'
-    },
-      locationPlaceholder: () => {
-      return 'Location';
-    },
-      startDatePlaceholder: () => {
-      return 'Start date';
-    },
-      endDatePlaceholder: () => {
-      return 'End date';
     },
     alldayTitle: () => {
       return '<span class="tui-full-calendar-left-content" style="color: #fff">All Day</span>'
